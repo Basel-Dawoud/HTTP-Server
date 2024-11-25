@@ -1,0 +1,42 @@
+Welcome to My HTTP Server!
+
+This is a simple HTTP server implementation in C.
+
+### About HTTP
+HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the web. It is used to transfer hypertext requests and information on the internet. The most common method of HTTP is GET, which is used to request data from a specified resource.
+
+### How to Use This Server
+You can interact with this server using the following commands in your terminal or via a web browser:
+
+1. **Retrieve the main page:**
+   Use this command to get the home page:
+curl http://localhost:8080/
+
+
+2. **Retrieve another HTML page:**
+To access another page (make sure it exists), use:
+curl http://localhost:8080/about.html
+
+
+3. **List files in a directory:**
+To see the contents of a directory, you can run:
+curl http://localhost:8080/test_directory/
+
+
+4. **Test a nonexistent resource:**
+To check how the server responds to a nonexistent resource, try:
+curl http://localhost:8080/nonexistent.html
+
+
+### Additional Features
+- **Content-Type Headers:** The server sends appropriate content-type headers based on the type of resource requested (HTML, text, etc.).
+- **Error Handling:** The server provides meaningful error messages for non-existent resources or unsupported methods.
+
+### Contact Information
+If you have any questions or need support, feel free to reach out to me:
+
+- **Name:** Basel Dawoud
+- **Email:** baseldawoud@gmail.com
+
+Thank you for using my HTTP server!
+

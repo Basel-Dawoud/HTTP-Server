@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My HTTP Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My HTTP Server</h1>
+    <p>My name is Basel Dawoud and I created this server in C.</p>
+
+    <h2>Server Capabilities</h2>
+    <p>This server can handle the following:</p>
+    <ul>
+        <li>GET requests for static files (e.g., HTML).</li>
+        <li>Directory listing of available files in a requested directory.</li>
+        <li>Custom error messages for unsupported requests or missing resources.</li>
+    </ul>
+
+    <h2>Usage Instructions</h2>
+    <p>You can interact with this server using a web browser or command-line tools like <code>curl</code>.</p>
+    <p>Here are some examples:</p>
+    <ul>
+        <li>To retrieve the main page: <code>curl http://localhost:8080/</code></li>
+        <li>To retrieve Hello file: <code>curl http://localhost:8080/Hello</code></li>
+	<li>To retrieve another HTML page: <code>curl http://localhost:8080/about.html</code></li>
+        <li>To list files in a directory: <code>curl http://localhost:8080/test_directory/</code></li>
+	<li>To list a file in the test directory: <code>curl http://localhost:8080/test_directory/test_file.html</code></li>
+        <li>To test a nonexistent resource: <code>curl http://localhost:8080/nonexistent.html</code></li>
+    </ul>
+
+    <h2>Additional Information</h2>
+    <p>This server is a simple implementation of an HTTP server in C, designed for educational purposes. You can find the source code and contribute to its development on my GitHub profile.</p>
+    
+    <h2>Contact</h2>
+    <p>If you have any questions or feedback, feel free to reach out to me at <a href="mailto:basel.dawoud@example.com">baseldawoud2003@gmail.com</a>.</p>
+</body>
+</html>
+
