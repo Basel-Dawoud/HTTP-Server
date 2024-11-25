@@ -1,66 +1,76 @@
-```markdown
-# HTTP Server
+# My HTTP Server Implementation
 
-Welcome to My HTTP Server!
+This repository contains a simple HTTP server implemented in C. The server can handle basic HTTP GET requests for static files, directory listings, and custom error messages. It is designed for educational purposes and to demonstrate fundamental network programming concepts.
 
-My name is Basel Dawoud, and I created this server in C. This project serves as a simple implementation of an HTTP server that can handle various requests and is designed for educational purposes.
+## Overview of Implementation
 
-## Server Capabilities
+The server listens for incoming connections on port 8080 and processes client requests by performing the following operations:
 
-This server can handle the following:
+1. **Socket Creation and Binding**: The server creates a socket, binds it to the specified port, and listens for incoming connections.
 
-- **GET requests for static files** (e.g., HTML).
-- **Directory listing** of available files in a requested directory.
-- **Custom error messages** for unsupported requests or missing resources.
+2. **Handling Client Requests**: When a client connects, the server reads the incoming HTTP request, parses it, and determines the requested resource (file or directory).
 
-## Usage Instructions
+3. **Resource Management**:
+   - **Static Files**: If the requested resource is a file, it reads the file and sends its contents as an HTTP response.
+   - **Directories**: If the resource is a directory, it lists its contents in an HTML format.
+   - **Error Handling**: If the requested resource does not exist or is of an unsupported type, the server responds with appropriate error messages.
 
-You can interact with this server using a web browser or command-line tools like `curl`. Here are some examples of how to use it:
+## Code Breakdown
 
-- To retrieve the main page:
-  ```bash
-  curl http://localhost:8080/
-  ```
+### Main Server Functionality
 
-- To retrieve a specific file (e.g., `Hello`):
-  ```bash
-  curl http://localhost:8080/Hello
-  ```
+**File: `http_server.c`**
 
-- To retrieve another HTML page (e.g., `about.html`):
-  ```bash
-  curl http://localhost:8080/about.html
-  ```
+- **Socket Creation**: The server socket is created using `socket()` and configured with `bind()` and `listen()`.
+- **Accepting Connections**: The server enters an infinite loop, accepting client connections and passing them to the `handle_client()` function for processing.
 
-- To list files in a directory (e.g., `test_directory`):
-  ```bash
-  curl http://localhost:8080/test_directory/
-  ```
+### Client Handling
 
-- To access a specific file in the test directory:
-  ```bash
-  curl http://localhost:8080/test_directory/test_file.html
-  ```
+**Function: `handle_client(int client_socket)`**
 
-- To test a nonexistent resource:
-  ```bash
-  curl http://localhost:8080/nonexistent.html
-  ```
+- Reads the incoming request and parses the HTTP method and requested path.
+- Checks if the requested resource is a directory or a regular file using `stat()`.
+- Calls `list_directory()` to handle directory requests or `send_file()` to serve files.
 
-## Additional Information
+### Sending Responses
 
-This server is a simple implementation of an HTTP server in C, designed for educational purposes. You can find the source code and contribute to its development on my GitHub profile.
+**Function: `send_response(int client_socket, const char *status, const char *message)`**
 
-### Features
+- Constructs and sends an HTTP response with the specified status and message.
 
-- Accepts connections from web browsers.
-- Reads and parses HTTP requests.
-- Processes requests based on the requested resource:
-  1. **Directory**: Lists its contents.
-  2. **Regular File**: Sends its contents.
-  3. **CGI File**: Executes it (if applicable).
-  4. **Nonexistent Resource**: Sends the proper HTTP error message.
-- Constructs and sends replies to clients.
+### File Sending
+
+**Function: `send_file(int client_socket, const char *filename)`**
+
+- Opens the requested file and sends its content to the client as an HTTP response.
+- Constructs an HTTP header indicating the response status and content type.
+
+### Directory Listing
+
+**Function: `list_directory(int client_socket, const char *dir_path)`**
+
+- Opens the specified directory and reads its contents.
+- Sends the list of entries back to the client in an HTML format.
+
+## Compilation and Running
+
+To compile and run the server, follow these steps:
+
+1. **Compile the Server**:
+   ```bash
+   gcc -o http_server http_server.c http_functions.c
+
+
+2. **Run the Server**:
+   ```bash
+   ./http_server
+   ```
+
+3. **Testing the Server**:
+   You can test the server using a web browser or `curl`. For example:
+   ```bash
+   curl http://localhost:8080/
+   ```
 
 ## Contact
 
