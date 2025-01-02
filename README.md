@@ -1,4 +1,4 @@
-# My HTTP Server Implementation
+# HTTP Server Implementation
 
 This repository contains a simple HTTP server implemented in C. The server can handle basic HTTP GET requests for static files, directory listings, and custom error messages. It is designed for educational purposes and to demonstrate fundamental network programming concepts.
 
